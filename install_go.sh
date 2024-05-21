@@ -22,7 +22,7 @@ while getopts ":v:p:" opt; do
 done
 shift $((OPTIND -1))
 
-# 如果未指定版本或路径，提供提示并退出
+# 未指定版本或路径，提示并终止
 if [ -z "$version" ]; then
   echo "Usage: $0 -v <version_number> -p <installation_path>"
   exit 1
@@ -37,7 +37,7 @@ fi
 OS=$(uname -s)
 echo "Detected OS: $OS"
 
-# 根绝OS下载文件的URL
+# 根据OS下载文件的URL
 if [ "$OS" = "Darwin" ]; then
   file_url="https://dl.google.com/go/$version.darwin-amd64.tar.gz"
 elif [ "$OS" = "Linux" ]; then
